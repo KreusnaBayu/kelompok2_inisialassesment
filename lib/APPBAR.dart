@@ -29,13 +29,49 @@ class HomePage extends StatelessWidget {
             ),
           ],
         ),
-        body: Center(
-          child: Text(
-            'Body Content',
-            style: TextStyle(fontSize: 20),
+        body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          SizedBox(height: 50),
+          Container(
+  
+            margin: EdgeInsets.symmetric(horizontal: 20),
+            padding: EdgeInsets.all(20),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(18),
+              color: Colors.transparent,
+            ),
+            // Set a fixed size for the container
+            height: 300,
+            width: double.infinity,
+            child: Stack(
+              children: [
+                // Background image
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    image: DecorationImage(
+                      image: AssetImage('assets/masjid2.jpg'),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                // Text
+                Positioned(
+                  bottom: 20,
+                  left: 20,
+                  child: Text(
+                    'Hai',
+                    style: TextStyle(fontSize: 24, color: Colors.white),
+                  ),
+                ),
+              ],
+            ),
           ),
-        ),
+        ],
       ),
+    ),
     );
   }
 }
+
