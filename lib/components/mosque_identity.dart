@@ -15,15 +15,17 @@ class MosqueIdentity extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: MediaQuery.of(context).size.width,
       padding: const EdgeInsets.symmetric(
         vertical: 30,
-        horizontal: 15,
+        horizontal: 20,
       ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              const SizedBox(width: 50),
               Text(
                 "Masjid $mosqueName",
                 style: const TextStyle(
@@ -31,7 +33,6 @@ class MosqueIdentity extends StatelessWidget {
                   fontSize: 20,
                 ),
               ),
-              const SizedBox(width: 50),
               const Text(
                 "Edit",
                 style: TextStyle(
@@ -42,30 +43,28 @@ class MosqueIdentity extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: 25),
+          const SizedBox(height: 10),
           Row(
             children: [
               const Icon(Icons.location_on_outlined),
               const SizedBox(width: 10),
-              Text(
-                "Masjid $mosqueLocation",
-                overflow: TextOverflow.visible,
-                maxLines: 2,
-                style: const TextStyle(
-                  fontSize: 16,
+              Expanded(
+                child: Text(
+                  "Masjid $mosqueLocation",
+                  style: const TextStyle(
+                    fontSize: 16,
+                  ),
                 ),
               ),
             ],
           ),
-          const SizedBox(height: 25),
+          const SizedBox(height: 10),
           Row(
             children: [
               const Icon(Icons.phone),
               const SizedBox(width: 10),
               Text(
-                "Masjid $mosquePhone",
-                overflow: TextOverflow.visible,
-                softWrap: true,
+                mosquePhone,
                 style: const TextStyle(
                   fontSize: 16,
                 ),
