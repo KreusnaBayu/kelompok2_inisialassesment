@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:planing/container.dart';
-
-
-void main() {
-  runApp(const HomePage());
-}
+import 'package:planing/commponents/imagecontroller.dart';
+import 'package:planing/commponents/mosque_identity.dart';
+import 'package:planing/const/url.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -31,50 +28,70 @@ class HomePage extends StatelessWidget {
             ),
           ],
         ),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            SizedBox(height: 50),
-            Container(
-              margin: EdgeInsets.symmetric(horizontal: 20),
-              padding: EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(18),
-                color: Colors.transparent,
-              ),
-              // Set a fixed size for the container
-              height: 300,
-              width: double.infinity,
-              child: Stack(
-                children: [
-                  // Background image
-                  Container(
-                    decoration: BoxDecoration(
+        body: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              SizedBox(height: 10),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 20),
+                padding: EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(18),
+                  color: Colors.transparent,
+                ),
+                height: 300,
+                width: double.infinity,
+                child: Stack(
+                  children: [
+                    ClipRRect(
                       borderRadius: BorderRadius.circular(20),
-                      image: DecorationImage(
-                        image: AssetImage('assets/masjid2.jpg'),
+                      child: Image.asset(
+                        'assets/masjid2.jpg',
                         fit: BoxFit.cover,
+                        width: double.infinity,
+                        height: double.infinity,
                       ),
                     ),
-                  ),
-                  // Text
-                  Positioned(
-                    bottom: 20,
-                    left: 20,
-                    child: Text(
-                      'Masjid Istiqlal',
-                      style: TextStyle(fontSize: 24, color: Colors.white),
+                    Positioned(
+                      bottom: 20,
+                      left: 20,
+                      child: Text(
+                        'Masjid Istiqlal',
+                        style: TextStyle(fontSize: 24, color: Colors.white),
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-            SizedBox(height: 20), // Spacer antara dua container
-            // Container kedua
-            
-          ],
+              SizedBox(height: 20),
+              // Menggunakan ListView untuk mengatasi right overflow
+              SizedBox(
+                height: 80,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: 6, // Jumlah gambar
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: EdgeInsets.only(left: index == 0 ? 20 : 5),
+                      child: buildImageContainer(getImageUrl(index)),
+                    );
+                  },
+                ),
+              ),
+              SizedBox(height: 20),
+               MosqueIdentity(
+                mosqueName: 'Istiqlal',
+                mosqueLocation: 'Jakarta, Indonesia',
+                mosquePhone: '+62 21 3822648',
+              ),
+            ],
+          ),
         ),
+        
       ),
     );
   }
+
+  
 }
