@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:planing/const/color.dart';
 
 class MosqueIdentity extends StatelessWidget {
   final String mosqueName;
@@ -38,7 +39,7 @@ class MosqueIdentity extends StatelessWidget {
                 style: TextStyle(
                   fontWeight: FontWeight.w500,
                   fontSize: 20,
-                  color: Colors.blueAccent,
+                  color: CustomColors.blue,
                 ),
               ),
             ],
@@ -46,14 +47,16 @@ class MosqueIdentity extends StatelessWidget {
           const SizedBox(height: 10),
           Row(
             children: [
-              const Icon(Icons.location_on_outlined),
+              const Icon(
+                Icons.location_on_outlined,
+                color: CustomColors.blue,
+              ),
               const SizedBox(width: 10),
               Expanded(
                 child: Text(
                   "Masjid $mosqueLocation",
                   style: const TextStyle(
-                    fontSize: 16,
-                  ),
+                      fontSize: 16, color: CustomColors.textmasjid),
                 ),
               ),
             ],
@@ -61,13 +64,15 @@ class MosqueIdentity extends StatelessWidget {
           const SizedBox(height: 10),
           Row(
             children: [
-              const Icon(Icons.phone),
+              Icon(
+                Icons.phone,
+                color: CustomColors.blue, // Ganti warna sesuai keinginan Anda
+              ),
               const SizedBox(width: 10),
               Text(
                 mosquePhone,
                 style: const TextStyle(
-                  fontSize: 16,
-                ),
+                    fontSize: 16, color: CustomColors.textmasjid),
               ),
             ],
           ),
